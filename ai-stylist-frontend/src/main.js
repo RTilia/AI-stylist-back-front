@@ -8,7 +8,9 @@ import './styles/sidebar.css';
 import './styles/chat.css';
 import './styles/fitting.css';
 
-const API_URL = "http://127.0.0.1:8000/api/v1";
+const API_URL = (window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1")
+  ? "http://127.0.0.1:8000/api/v1"
+  : "/api/v1";
 
 window.userProfileState = {
   name: "",
