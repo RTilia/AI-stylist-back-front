@@ -1,0 +1,24 @@
+:root {
+  /* --- ЦВЕТА --- */
+  --primary-color: #000000;
+  --accent-color: #646cff;
+  --bg-body: #e0e0e0;
+  --bg-app: #ffffff;
+  --text-main: #333333;
+  --text-secondary: #888888;
+  --top-bar-bg: #333333;
+
+  /* --- РАЗМЕРЫ --- */
+  --app-max-width: 480px;
+  --header-height: 60px;
+  --border-radius: 12px;
+
+  /* --- ИКОНКИ --- */
+  --icon-chat: url("data:image/svg+xml,%3Csvg width='23' height='23' viewBox='0 0 23 23' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20.125 14.375C20.125 14.8833 19.9231 15.3708 19.5636 15.7303C19.2042 16.0897 18.7167 16.2917 18.2083 16.2917H6.70833L2.875 20.125V4.79167C2.875 4.28334 3.07693 3.79582 3.43638 3.43638C3.79582 3.07693 4.28334 2.875 4.79167 2.875H18.2083C18.7167 2.875 19.2042 3.07693 19.5636 3.43638C19.9231 3.79582 20.125 4.28334 20.125 4.79167V14.375Z' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  --icon-plus: url("data:image/svg+xml,%3Csvg width='25' height='25' viewBox='0 0 25 25' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12.5 5.20831V19.7916M5.20837 12.5H19.7917' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  --icon-heart: url("data:image/svg+xml,%3Csvg width='24' height='25' viewBox='0 0 24 25' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20.84 4.80209C20.3292 4.26981 19.7228 3.84756 19.0554 3.55947C18.3879 3.27139 17.6725 3.12311 16.95 3.12311C16.2275 3.12311 15.5121 3.27139 14.8446 3.55947C14.1772 3.84756 13.5708 4.26981 13.06 4.80209L12 5.90626L10.94 4.80209C9.9083 3.72741 8.50903 3.12366 7.05 3.12366C5.59096 3.12366 4.19169 3.72741 3.16 4.80209C2.1283 5.87677 1.54871 7.33435 1.54871 8.85418C1.54871 10.374 2.1283 11.8316 3.16 12.9063L12 22.1146L20.84 12.9063C21.351 12.3742 21.7563 11.7425 22.0329 11.0473C22.3095 10.352 22.4518 9.60677 22.4518 8.85418C22.4518 8.10158 22.3095 7.35637 22.0329 6.6611C21.7563 5.96583 21.351 5.33413 20.84 4.80209Z' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  --icon-profile: url("data:image/svg+xml,%3Csvg width='25' height='25' viewBox='0 0 25 25' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20.8333 21.875V19.7917C20.8333 18.6866 20.3943 17.6268 19.6129 16.8454C18.8315 16.064 17.7717 15.625 16.6666 15.625H8.33329C7.22822 15.625 6.16842 16.064 5.38701 16.8454C4.60561 17.6268 4.16663 18.6866 4.16663 19.7917V21.875M16.6666 7.29167C16.6666 9.59285 14.8011 11.4583 12.5 11.4583C10.1988 11.4583 8.33329 9.59285 8.33329 7.29167C8.33329 4.99048 10.1988 3.125 12.5 3.125C14.8011 3.125 16.6666 4.99048 16.6666 7.29167Z' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  --icon-menu-opened: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M8 6H21M8 12H21M8 18H21M3 6H3.01M3 12H3.01M3 18H3.01' stroke='%231E1E1E' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  --icon-send: url("data:image/svg+xml,%3Csvg width='10' height='18' viewBox='0 0 10 18' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 17L9 9L1 1' stroke='%231E1E1E' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  --icon-menu-closed: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20 6L10 6M20 12H4M20 18H14' stroke='%231E1E1E' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+}

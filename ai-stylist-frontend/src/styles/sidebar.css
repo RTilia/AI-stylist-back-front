@@ -1,0 +1,118 @@
+/* =========================================
+   БОКОВОЕ МЕНЮ (SIDEBAR)
+   ========================================= */
+
+.sidebar-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 99;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.sidebar-overlay.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Сама выезжающая панель */
+.sidebar {
+  position: absolute;
+  top: 0;
+  right: -100%;
+  width: 85%;
+  height: 100%;
+  background-color: var(--bg-app);
+  z-index: 100;
+  box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+  transition: right 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  padding: 40px 20px 20px;
+}
+
+.sidebar.active {
+  right: 0;
+}
+
+/* Кнопка закрытия */
+.close-sidebar-btn {
+  align-self: flex-end;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  margin-bottom: 30px;
+}
+
+/* Разделы меню */
+.sidebar-section {
+  margin-bottom: 30px;
+}
+
+.sidebar-title {
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--text-main);
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.sidebar-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.sidebar-list li {
+  font-size: 15px;
+  color: var(--text-main);
+  cursor: pointer;
+  padding-left: 34px;
+  transition: color 0.2s ease;
+}
+
+.sidebar-list li:hover {
+  color: #007AFF;
+}
+
+/* Навигация сайдбара */
+.sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.sidebar-link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: transparent;
+  border: none;
+  padding: 14px 16px;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--text-main);
+  cursor: pointer;
+  text-align: left;
+  transition: background-color 0.2s ease;
+}
+
+.sidebar-link:hover {
+  background-color: rgba(0, 122, 255, 0.08);
+  color: #007AFF;
+}
+
+.sidebar-link:active {
+  background-color: rgba(0, 122, 255, 0.15);
+}

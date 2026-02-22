@@ -1,0 +1,28 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background-color: var(--bg-body);
+  color: var(--text-main);
+
+  display: flex;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+/* === 3. Контейнер приложения === */
+#app {
+  width: 100%;
+  max-width: var(--app-max-width);
+  background-color: var(--bg-app);
+  min-height: 100vh;
+  position: relative;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  padding: 0 16px;
+  display: flex;
+  flex-direction: column;
+}

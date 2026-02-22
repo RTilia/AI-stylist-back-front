@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Stylist</title>
+</head>
+
+<body>
+  <div id="app" style="position: relative; overflow: hidden;">
+
+    <div id="auth-section" class="auth-container">
+      <div id="auth-choice" class="auth-view">
+        <button class="auth-btn" id="btn-show-login">Вход</button>
+        <button class="auth-btn" id="btn-show-register">Регистрация</button>
+      </div>
+      <div id="auth-register" class="auth-view" style="display: none;">
+        <input type="text" id="reg-name" class="auth-input" placeholder="Имя">
+        <input type="text" id="reg-username" class="auth-input" placeholder="Никнейм">
+        <input type="password" id="reg-password" class="auth-input" placeholder="Пароль">
+        <button class="auth-btn primary" id="btn-do-register">Регистрация</button>
+        <button class="auth-btn-back" id="btn-back-register">Назад</button>
+      </div>
+      <div id="auth-login" class="auth-view" style="display: none;">
+        <input type="text" id="login-username" class="auth-input" placeholder="Никнейм">
+        <input type="password" id="login-password" class="auth-input" placeholder="Пароль">
+        <button class="auth-btn primary" id="btn-do-login">Вход</button>
+        <button class="auth-btn-back" id="btn-back-login">Назад</button>
+      </div>
+    </div>
+
+    <div id="main-app" style="display: none; flex-grow: 1; flex-direction: column; width: 100%;">
+
+      <header class="top-bar">
+        <button class="nav-btn active" id="nav-chat"><span class="icon icon-chat"></span></button>
+        <button class="nav-btn" id="nav-plus"><span class="icon icon-plus"></span></button>
+        <button class="nav-btn" id="nav-heart"><span class="icon icon-heart"></span></button>
+        <button class="nav-btn" id="nav-profile"><span class="icon icon-profile"></span></button>
+      </header>
+
+      <button class="menu-btn" id="open-sidebar-btn"><span class="icon icon-menu"></span></button>
+
+      <main class="chat-area">
+        <div class="chat-history" id="chat-history-container">
+        </div>
+      </main>
+
+      <main class="plus-area" style="display: none;">
+        <div class="outfit-choice-container" id="outfit-choice-container">
+          <h2 class="outfit-choice-title">Создать новый образ</h2>
+          <p class="outfit-choice-subtitle">Выберите способ создания:</p>
+          <button class="outfit-choice-btn" id="btn-new-params">
+            <span class="outfit-choice-icon">📝</span>
+            <span class="outfit-choice-label">С новыми параметрами</span>
+            <span class="outfit-choice-desc">Пройти анкету заново</span>
+          </button>
+          <button class="outfit-choice-btn" id="btn-saved-params">
+            <span class="outfit-choice-icon">✅</span>
+            <span class="outfit-choice-label">С сохранёнными параметрами</span>
+            <span class="outfit-choice-desc">Использовать данные из профиля</span>
+          </button>
+        </div>
+        <div id="plus-capsules-container"></div>
+      </main>
+
+      <main class="heart-area" style="display: none;">
+        <div class="heart-header">
+          <h2 class="heart-title">Избранное</h2>
+        </div>
+        <div class="tabs-toggle">
+          <button class="toggle-btn active" id="fav-tab-products">Товары</button>
+          <button class="toggle-btn" id="fav-tab-looks">Образы</button>
+        </div>
+        <div class="items-grid" id="fav-products-grid">
+          <div class="fav-empty-state" id="fav-products-empty">Здесь будут ваши избранные товары.<br>Нажмите ❤️ на
+            товаре, чтобы добавить.</div>
+        </div>
+        <div class="items-grid" id="fav-looks-grid" style="display: none;">
+          <div class="fav-empty-state" id="fav-looks-empty">Здесь будут ваши сохранённые образы.<br>Сохраните капсулу
+            после генерации.</div>
+        </div>
+      </main>
+
+      <main class="profile-area" style="display: none;">
+        <div class="profile-header">
+          <h2 class="profile-title">Личный кабинет</h2>
+        </div>
+
+        <div class="profile-avatar-large" id="profile-avatar-display"
+          style="cursor: pointer; background-size: cover; background-position: center; border: 2px dashed #007AFF;">
+          <span id="avatar-hint" style="color: #007AFF; font-size: 12px; font-weight: bold;">+ Фото</span>
+        </div>
+        <input type="file" id="profile-avatar-upload" accept="image/*" style="display: none;">
+
+        <div class="profile-info">
+          <h3 class="profile-name" id="ui-profile-name">Имя</h3>
+          <p class="profile-handle" id="ui-profile-username">логин</p>
+        </div>
+
+        <div class="profile-sections">
+          <button class="section-btn">Личная информация</button>
+          <div class="section-content" style="display: none;">
+            <div class="info-row"><span class="info-label">Дата рождения</span><span class="info-value profile-field"
+                data-field="birthday">Не указана</span></div>
+          </div>
+
+          <button class="section-btn">Индивидуальность</button>
+          <div class="section-content" style="display: none;">
+            <div class="info-row"><span class="info-label">Цвет волос</span><span class="info-value profile-field"
+                data-field="hair_color">Неизвестно</span></div>
+            <div class="info-row"><span class="info-label">Цвет глаз</span><span class="info-value profile-field"
+                data-field="eye_color">Неизвестно</span></div>
+            <div class="info-row"><span class="info-label">Тон кожи</span><span class="info-value profile-field"
+                data-field="skin_tone">Неизвестно</span></div>
+            <div class="info-row"><span class="info-label">Подтон</span><span class="info-value profile-field"
+                data-field="undertone">Неизвестно</span></div>
+            <div class="info-row"><span class="info-label" style="background-color: #007AFF;">Цветотип ИИ</span>
+              <select class="info-value profile-select" data-field="color_type" id="select-color-type">
+                <option value="">Не определён</option>
+                <option value="Весна">Весна</option>
+                <option value="Тёплая весна">Тёплая весна</option>
+                <option value="Яркая весна">Яркая весна</option>
+                <option value="Светлая весна">Светлая весна</option>
+                <option value="Лето">Лето</option>
+                <option value="Холодное лето">Холодное лето</option>
+                <option value="Мягкое лето">Мягкое лето</option>
+                <option value="Светлое лето">Светлое лето</option>
+                <option value="Осень">Осень</option>
+                <option value="Тёплая осень">Тёплая осень</option>
+                <option value="Глубокая осень">Глубокая осень</option>
+                <option value="Мягкая осень">Мягкая осень</option>
+                <option value="Зима">Зима</option>
+                <option value="Холодная зима">Холодная зима</option>
+                <option value="Яркая зима">Яркая зима</option>
+                <option value="Глубокая зима">Глубокая зима</option>
+              </select>
+            </div>
+            <div class="info-row"><span class="info-label" style="background-color: #007AFF;">Контрастность
+                ИИ</span><span class="info-value profile-field" data-field="contrast">Не определена</span></div>
+          </div>
+
+          <button class="section-btn">Характеристики тела</button>
+          <div class="section-content" style="display: none;">
+            <div class="info-row"><span class="info-label">Рост</span><span class="info-value profile-field"
+                data-field="height">Неизвестно</span></div>
+            <div class="info-row"><span class="info-label">Вес</span><span class="info-value profile-field"
+                data-field="weight">Неизвестно</span></div>
+            <div class="info-row"><span class="info-label">Грудь</span><span class="info-value profile-field"
+                data-field="chest">Неизвестно</span></div>
+            <div class="info-row"><span class="info-label">Талия</span><span class="info-value profile-field"
+                data-field="waist">Неизвестно</span></div>
+            <div class="info-row"><span class="info-label">Бедра</span><span class="info-value profile-field"
+                data-field="hips">Неизвестно</span></div>
+            <div class="info-row"><span class="info-label" style="background-color: #007AFF;">Тип фигуры ИИ</span>
+              <select class="info-value profile-select" data-field="body_type" id="select-body-type">
+                <option value="">Не определён</option>
+                <option value="Песочные часы">Песочные часы</option>
+                <option value="Груша">Груша (треугольник)</option>
+                <option value="Яблоко">Яблоко (овал)</option>
+                <option value="Прямоугольник">Прямоугольник</option>
+                <option value="Перевёрнутый треугольник">Перевёрнутый треугольник</option>
+              </select>
+            </div>
+          </div>
+
+          <button class="section-btn">Стиль и предпочтения</button>
+          <div class="section-content" style="display: none;">
+            <div class="info-row"><span class="info-label">Стиль</span><span class="info-value profile-field"
+                data-field="style_categories">Неизвестно</span></div>
+            <div class="info-row"><span class="info-label">Бюджет</span><span class="info-value profile-field"
+                data-field="budget">Неизвестно</span></div>
+            <div class="info-row"><span class="info-label">Предпочтения</span><span class="info-value profile-field"
+                data-field="requirements">Нет</span></div>
+          </div>
+        </div>
+
+        <button class="edit-btn" id="btn-edit-profile">Изменить</button>
+        <button class="logout-btn" id="btn-logout">Выход</button>
+      </main>
+
+      <main class="fitting-area" style="display: none;" id="fitting-screen">
+        <div class="fitting-header">
+          <div class="fitting-title">Примерка образа</div>
+        </div>
+        <div class="look-placeholder"></div>
+        <div class="fitting-instruction">Выделите галочкой вещи<br>для примерки</div>
+        <div class="fitting-toolbar">
+          <button class="filter-btn" id="open-filters-btn"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2">
+              <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon>
+            </svg></button>
+          <div class="active-filters"><span class="filter-tag"><span class="tag-icon">!</span> ИИ генерирует...</span>
+          </div>
+          <div class="hanger-container">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path
+                d="M12 2v4M8.5 6a3.5 3.5 0 0 1 7 0c0 1.5-1.2 2.5-3 3.5l-9 5A2 2 0 0 0 5 18h14a2 2 0 0 0 1.5-3.5l-9-5" />
+            </svg>
+            <span class="hanger-badge" id="hanger-badge" style="display: none;">0</span>
+          </div>
+        </div>
+        <div class="items-grid" id="capsule-grid">
+        </div>
+      </main>
+
+      <footer class="input-container" id="main-input-container">
+        <label for="photo-upload" class="attach-btn" style="cursor: pointer; padding: 10px;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#8e8e93" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path
+              d="M21.44 11.05l-9.19 9.19a6 6 0 01-8.49-8.49l9.19-9.19a4 4 0 015.66 5.66l-9.2 9.19a2 2 0 01-2.83-2.83l8.49-8.48" />
+          </svg>
+        </label>
+        <input type="file" id="photo-upload" accept="image/*" style="display: none;" />
+        <input type="text" id="main-input-field" placeholder="Спросите у ИИ-стилиста" />
+        <button class="send-btn" id="chat-send-btn"><span class="icon icon-send"></span></button>
+      </footer>
+
+      <div id="sidebar-overlay" class="sidebar-overlay"></div>
+      <aside id="sidebar" class="sidebar">
+        <button class="close-sidebar-btn" id="close-sidebar-btn"><span class="icon icon-menu"></span></button>
+        <nav class="sidebar-nav">
+          <button class="sidebar-link" data-nav="0">Чат</button>
+          <button class="sidebar-link" data-nav="1">Образы</button>
+          <button class="sidebar-link" data-nav="2">Избранное</button>
+          <button class="sidebar-link" data-nav="3">Профиль</button>
+          <hr class="sidebar-divider">
+          <button class="sidebar-link sidebar-logout" id="sidebar-logout-btn">Выход</button>
+        </nav>
+      </aside>
+
+      <div class="filters-modal-overlay" id="filters-overlay"></div>
+      <div class="filters-modal" id="filters-modal">
+        <div class="filters-header">
+          <button id="reset-filters-btn">Сбросить</button>
+          <button id="apply-filters-btn">Применить</button>
+        </div>
+        <div class="filter-category">Категории</div>
+        <div class="filter-options">
+          <button class="filter-chip">Платья</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <script type="module" src="/src/main.js"></script>
+</body>
+
+</html>
